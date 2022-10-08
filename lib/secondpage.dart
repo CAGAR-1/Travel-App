@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:travel_app/Thirdscreen.dart';
 import 'package:travel_app/main.dart';
+import 'package:get/get.dart';
 
 class SecondPage extends StatefulWidget {
   const SecondPage({super.key});
@@ -172,68 +174,77 @@ class _SecondPageState extends State<SecondPage> {
                   itemCount: imagen.length,
                   scrollDirection: Axis.vertical,
                   itemBuilder: ((context, index) {
-                    return Padding(
-                        padding: EdgeInsets.symmetric(vertical: 20),
-                        child: Card(
-                          margin: EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 10),
-                          shadowColor: Colors.pink,
-                          child: Row(
-                            children: [
-                              Expanded(
-                                flex: 35,
-                                child: Container(
-                                  height: 100,
-                                  width: 100,
-                                  decoration: BoxDecoration(
-                                      color: Colors.pink,
-                                      image: DecorationImage(
-                                          image: AssetImage(
-                                            imagen[index],
+                    return InkWell(
+                      onTap: () {
+                        Get.to(() => thirdscreen({
+                              'image': imagen[index],
+                              'location': locations[index],
+                              'quote':quotes[index]
+                            }));
+                      },
+                      child: Padding(
+                          padding: EdgeInsets.symmetric(vertical: 20),
+                          child: Card(
+                            margin: EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 10),
+                            shadowColor: Colors.pink,
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  flex: 35,
+                                  child: Container(
+                                    height: 100,
+                                    width: 100,
+                                    decoration: BoxDecoration(
+                                        color: Colors.pink,
+                                        image: DecorationImage(
+                                            image: AssetImage(
+                                              imagen[index],
+                                            ),
+                                            fit: BoxFit.cover)),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Expanded(
+                                  flex: 65,
+                                  child: Column(
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Icon(
+                                            Icons.location_on_rounded,
+                                            color: Colors.grey.withOpacity(0.6),
+                                            size: 20,
                                           ),
-                                          fit: BoxFit.cover)),
-                                ),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Expanded(
-                                flex: 65,
-                                child: Column(
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Icon(
-                                          Icons.location_on_rounded,
-                                          color: Colors.grey.withOpacity(0.6),
-                                          size: 20,
-                                        ),
-                                        Text(
-                                          locations[index],
-                                          style: TextStyle(
-                                              color:
-                                                  Colors.black.withOpacity(0.8),
-                                              fontWeight: FontWeight.w700),
-                                        )
-                                      ],
-                                    ),
-                                    Divider(),
-                                    SizedBox(
-                                      width: 5,
-                                    ),
-                                    Text(
-                                      quotes[index],
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold,
-                                          fontStyle: FontStyle.italic),
-                                    )
-                                  ],
-                                ),
-                              )
-                            ],
-                          ),
-                        ));
+                                          Text(
+                                            locations[index],
+                                            style: TextStyle(
+                                                color: Colors.black
+                                                    .withOpacity(0.8),
+                                                fontWeight: FontWeight.w700),
+                                          )
+                                        ],
+                                      ),
+                                      Divider(),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      Text(
+                                        quotes[index],
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold,
+                                            fontStyle: FontStyle.italic),
+                                      )
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                          )),
+                    );
                   })),
             )
           ],

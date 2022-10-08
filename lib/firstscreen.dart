@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:get/get.dart';
+import 'package:travel_app/secondpage.dart';
 
 class FirstScreen extends StatelessWidget {
   const FirstScreen({super.key});
@@ -46,18 +46,23 @@ class FirstScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(40),
                   border: Border.all(color: Colors.white, width: 2),
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.double_arrow,
-                      color: Colors.white,
-                    ),
-                    Text(
-                      "Lets travel",
-                      style: TextStyle(fontSize: 30, color: Colors.white),
-                    ),
-                  ],
+                child: InkWell(
+                  onTap: () {
+                    Get.to(SecondPage());
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.double_arrow,
+                        color: Colors.white,
+                      ),
+                      Text(
+                        "Lets travel",
+                        style: TextStyle(fontSize: 30, color: Colors.white),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               SizedBox(
