@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:travel_app/buttonbar.dart';
+import 'package:travel_app/fourthscreen.dart';
 import 'package:travel_app/secondpage.dart';
 
 class FirstScreen extends StatelessWidget {
@@ -48,7 +50,7 @@ class FirstScreen extends StatelessWidget {
                 ),
                 child: InkWell(
                   onTap: () {
-                    Get.to(SecondPage());
+                    Get.to(SignIn());
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,

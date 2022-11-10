@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:travel_app/Thirdscreen.dart';
-import 'package:travel_app/main.dart';
 import 'package:get/get.dart';
+import 'package:travel_app/buttonbar.dart';
+import 'package:travel_app/firstscreen.dart';
+import 'package:travel_app/fourthscreen.dart';
 
 class SecondPage extends StatefulWidget {
   const SecondPage({super.key});
@@ -59,195 +61,197 @@ class _SecondPageState extends State<SecondPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          elevation: 0,
-          leading: Icon(
-            Icons.sort,
-            size: 30,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leading: Icon(
+          Icons.sort,
+          size: 30,
+          color: Colors.black,
+        ),
+        actions: [
+          Icon(
+            Icons.search,
             color: Colors.black,
           ),
-          actions: [
-            Icon(
-              Icons.search,
-              color: Colors.black,
-            ),
-            SizedBox(
-              width: 20,
-            ),
-            CircleAvatar(
-              backgroundColor: Colors.pink,
-              backgroundImage: AssetImage('images/explore2.jpeg'),
-            )
-          ],
-        ),
-        body: ListView(
-          padding: EdgeInsets.only(left: 20),
-          children: [
-            Text(
-              "Your Daily",
-              style:
-                  TextStyle(fontSize: 22, color: Colors.black.withOpacity(0.6)),
-            ),
-            SizedBox(
-              height: 0,
-            ),
-            Text(
-              "Recommendation",
-              style: TextStyle(
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black.withOpacity(0.6)),
-            ),
-            Container(
-              height: 250,
-              child: ListView.builder(
-                  itemCount: 6,
-                  scrollDirection: Axis.horizontal,
-                  shrinkWrap: true,
-                  itemBuilder: ((context, index) {
-                    return Column(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.only(
-                              left: index == 0 ? 0 : 20, bottom: 15, top: 5),
-                          height: 200,
-                          width: 190,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: Colors.blue,
-                            image: DecorationImage(
-                                image: AssetImage(
-                                  imagen[index],
-                                ),
-                                fit: BoxFit.cover),
-                          ),
-                          alignment: Alignment.bottomCenter,
-                          child: Text(
-                            names[index],
-                            style: TextStyle(
-                                color: Colors.green,
-                                fontSize: 22,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                      ],
-                    );
-                  })),
-            ),
-            Container(
-              height: 50,
-              child: ListView.builder(
+          SizedBox(
+            width: 20,
+          ),
+          CircleAvatar(
+            backgroundColor: Colors.pink,
+            backgroundImage: AssetImage('images/explore2.jpeg'),
+          )
+        ],
+      ),
+      body: ListView(
+        padding: EdgeInsets.only(left: 20),
+        children: [
+          Text(
+            "Your Daily",
+            style:
+                TextStyle(fontSize: 22, color: Colors.black.withOpacity(0.6)),
+          ),
+          SizedBox(
+            height: 0,
+          ),
+          Text(
+            "Recommendation",
+            style: TextStyle(
+                fontSize: 28,
+                fontWeight: FontWeight.bold,
+                color: Colors.black.withOpacity(0.6)),
+          ),
+          Container(
+            height: 250,
+            child: ListView.builder(
+                itemCount: 6,
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
-                physics: BouncingScrollPhysics(),
-                itemCount: topic.length,
                 itemBuilder: ((context, index) {
-                  return Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 10),
-                      child: GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              topicchoosen = topic[index];
-                            });
-                          },
-                          child: Text(
-                            topic[index],
-                            style: TextStyle(
-                                color: topicchoosen == topic[index]
-                                    ? Colors.black
-                                    : Colors.black.withOpacity(0.5),
-                                fontSize: 20,
-                                fontWeight: topicchoosen == topic[index]
-                                    ? FontWeight.w700
-                                    : FontWeight.w400),
-                          )));
-                }),
-              ),
+                  return Column(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(
+                            left: index == 0 ? 0 : 20, bottom: 15, top: 5),
+                        height: 200,
+                        width: 190,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.blue,
+                          image: DecorationImage(
+                              image: AssetImage(
+                                imagen[index],
+                              ),
+                              fit: BoxFit.cover),
+                        ),
+                        alignment: Alignment.bottomCenter,
+                        child: Text(
+                          names[index],
+                          style: TextStyle(
+                              color: Colors.green,
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                    ],
+                  );
+                })),
+          ),
+          Container(
+            height: 50,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              shrinkWrap: true,
+              physics: BouncingScrollPhysics(),
+              itemCount: topic.length,
+              itemBuilder: ((context, index) {
+                return Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    child: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            topicchoosen = topic[index];
+                          });
+                        },
+                        child: Text(
+                          topic[index],
+                          style: TextStyle(
+                              color: topicchoosen == topic[index]
+                                  ? Colors.black
+                                  : Colors.black.withOpacity(0.5),
+                              fontSize: 20,
+                              fontWeight: topicchoosen == topic[index]
+                                  ? FontWeight.w700
+                                  : FontWeight.w400),
+                        )));
+              }),
             ),
-            Container(
-              height: 310,
-              child: ListView.builder(
-                  itemCount: imagen.length,
-                  scrollDirection: Axis.vertical,
-                  itemBuilder: ((context, index) {
-                    return InkWell(
-                      onTap: () {
-                        Get.to(() => thirdscreen({
-                              'image': imagen[index],
-                              'location': locations[index],
-                              'quote':quotes[index]
-                            }));
-                      },
-                      child: Padding(
-                          padding: EdgeInsets.symmetric(vertical: 20),
-                          child: Card(
-                            margin: EdgeInsets.symmetric(
-                                horizontal: 10, vertical: 10),
-                            shadowColor: Colors.pink,
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  flex: 35,
-                                  child: Container(
-                                    height: 100,
-                                    width: 100,
-                                    decoration: BoxDecoration(
-                                        color: Colors.pink,
-                                        image: DecorationImage(
-                                            image: AssetImage(
-                                              imagen[index],
-                                            ),
-                                            fit: BoxFit.cover)),
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Expanded(
-                                  flex: 65,
-                                  child: Column(
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Icon(
-                                            Icons.location_on_rounded,
-                                            color: Colors.grey.withOpacity(0.6),
-                                            size: 20,
+          ),
+          Container(
+            height: 310,
+            child: ListView.builder(
+                itemCount: imagen.length,
+                scrollDirection: Axis.vertical,
+                itemBuilder: ((context, index) {
+                  return InkWell(
+                    onTap: () {
+                      Get.to(() => thirdscreen({
+                            'image': imagen[index],
+                            'location': locations[index],
+                            'quote': quotes[index]
+                          }));
+                    },
+                    child: Padding(
+                        padding: EdgeInsets.symmetric(vertical: 20),
+                        child: Card(
+                          margin: EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 10),
+                          shadowColor: Colors.pink,
+                          child: Row(
+                            children: [
+                              Expanded(
+                                flex: 35,
+                                child: Container(
+                                  height: 100,
+                                  width: 100,
+                                  decoration: BoxDecoration(
+                                      color: Colors.pink,
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                            imagen[index],
                                           ),
-                                          Text(
-                                            locations[index],
-                                            style: TextStyle(
-                                                color: Colors.black
-                                                    .withOpacity(0.8),
-                                                fontWeight: FontWeight.w700),
-                                          )
-                                        ],
-                                      ),
-                                      Divider(),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
-                                      Text(
-                                        quotes[index],
-                                        style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.bold,
-                                            fontStyle: FontStyle.italic),
-                                      )
-                                    ],
-                                  ),
-                                )
-                              ],
-                            ),
-                          )),
-                    );
-                  })),
-            )
-          ],
-        ));
+                                          fit: BoxFit.cover)),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Expanded(
+                                flex: 65,
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Icon(
+                                          Icons.location_on_rounded,
+                                          color: Colors.grey.withOpacity(0.6),
+                                          size: 20,
+                                        ),
+                                        Text(
+                                          locations[index],
+                                          style: TextStyle(
+                                              color:
+                                                  Colors.black.withOpacity(0.8),
+                                              fontWeight: FontWeight.w700),
+                                        )
+                                      ],
+                                    ),
+                                    Divider(),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Text(
+                                      quotes[index],
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold,
+                                          fontStyle: FontStyle.italic),
+                                    )
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                        )),
+                  );
+                })),
+          ),
+        ],
+      ),
+      bottomNavigationBar: buttonbar(),
+    );
   }
 }
